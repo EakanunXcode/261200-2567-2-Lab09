@@ -1,15 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        Moveable penguin = new Penguin();
-        Moveable ostrich = new Ostrich();
-        Flyable sparrow = new Sparrow();
-        Flyable eagle = new Eagle();
+        // การใช้งาน EmailNotifier
+        OrderProcessor emailOrderProcessor = new OrderProcessor(new EmailNotifier());
+        Order order1 = new Order("123");
+        emailOrderProcessor.processOrder(order1);
 
-        penguin.move(); // The penguin waddles on the ground.
-        ostrich.move(); // The ostrich runs at high speed.
-        sparrow.move(); // The sparrow hops on the ground.
-        sparrow.fly();  // The sparrow flies through the sky.
-        eagle.move();   // The eagle walks slowly on the ground.
-        eagle.fly();    // The eagle soars high in the sky.
+        // การใช้งาน SMSNotifier
+        OrderProcessor smsOrderProcessor = new OrderProcessor(new SMSNotifier());
+        Order order2 = new Order("456");
+        smsOrderProcessor.processOrder(order2);
     }
 }
